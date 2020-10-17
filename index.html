@@ -229,13 +229,57 @@
                                 <li class="wow fadeInUp" data-wow-duration="300ms" data-wow-delay="300ms">
                                     <div class="item">
                                         <div class="item-title">
-                                            <h2>Pancakes n' Such</h2>
-                                            <div class="border-bottom"></div>
-                                            <span>Rs. 150.00</span>
+                                            <script>
+                                                var r=0;
+                                                var k=0;
+                                            </script>
+                                            <h2 onclick="r=r+1; k=0; Veg(k); Nonveg(r)"><b style="cursor: pointer;">Non-veg</b></h2><br>
+                                            <table id="menuN">
+
+                                            </table>
+                                            <h2 onclick="k=k+1; r=0; Nonveg(r); Veg(k)"><b style="cursor: pointer;">Veg</b></h2>
+                                            <table id="menuV">
+
+                                            </table>
+                                            <script>
+
+                                                async function Nonveg(r){
+                if(r%2!=0){
+                const resp= await fetch('https://my-json-server.typicode.com/Promit-revar/fakeApijson/Non-veg');
+                const Non = await resp.json();
+                for(var i=0;i<=4;i++){
+                document.getElementById('menuN').innerHTML+="<td style='font-size:30px; class='item-title'>"+Non[i].item+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>"+"<td style='font-size:30px;'>Rs."+Non[i].Cost+"</td>";
+                    
+                }
+                }
+                else{
+                   
+                    document.getElementById('menuN').innerHTML=" ";
+                    
+                }
+            }
+            async function Veg(k){
+                if(k%2!=0){
+                const res=await fetch('https://my-json-server.typicode.com/Promit-revar/fakeApijson/Veg');
+                const Veg= await res.json();
+                for(var i=0;i<=4;i++){
+                    document.getElementById('menuV').innerHTML+="<td style='font-size:30px; class='item-title'>"+Veg[i].item+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>"+"<td style='font-size:30px;'>Rs."+Veg[i].Cost+"</td>";
+                }
+            }
+                else{
+                    
+                    document.getElementById('menuV').innerHTML=" ";
+                    
+                }
+            }
+
+                                            </script>
+                                            
+                                           
                                         </div>               
                                     </div>
                                 </li>
-                                <li class="wow fadeInUp" data-wow-duration="300ms" data-wow-delay="400ms">
+                               <!-- <li class="wow fadeInUp" data-wow-duration="300ms" data-wow-delay="400ms">
                                     <div class="item">
                                         <div class="item-title">
                                             <h2>Homestyle Chicken Pot Pie</h2>
@@ -280,7 +324,7 @@
                                         </div>
                                     </div>
                                 </li>
-                            </ul>
+                            </ul>-->
                             <a class="btn btn-default pull-right wow bounceIn" data-wow-duration="500ms" data-wow-delay="1200ms" href="#" role="button">More Info</a>
                         </div>
                     </div>
